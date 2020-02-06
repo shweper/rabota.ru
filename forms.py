@@ -7,11 +7,11 @@ browser.visit('https://nn.rabota.ru/v3_myVacancy.html?action=create&company_regi
 # Логинимся
 login_bar_xpath = '//*[@id="mail"]'
 login_bar = browser.find_by_xpath(login_bar_xpath)[0]
-login_bar.fill('shweper@ya.ru')
+login_bar.fill('Login')
 
 pass_bar_xpath = '//*[@id="password"]'
 pass_bar = browser.find_by_xpath(pass_bar_xpath)[0]
-pass_bar.fill('Fqtawe98')
+pass_bar.fill('pass')
 # кликкаем войти
 browser.find_by_xpath('//*[@id="authForm"]/input[5]').click()
 
