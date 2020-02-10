@@ -1,7 +1,6 @@
 from openpyxl import load_workbook
 import random
 
-
 wb = load_workbook('./DATA.xlsx')
 lst = (wb.sheetnames)
 
@@ -59,6 +58,13 @@ for number_gorod in range(kolichestvo_gorodov):
     #print(str(cell.value))
 #print(element)
 goroda_arr.pop(0)
-print(goroda_arr)
+#print(goroda_arr)
 
-print(range(kolichestvo_gorodov))
+print(goroda_arr[1][0])
+
+vca = 'Программист'
+slovar = {
+    'Программист': 'txi'}
+result = slovar.get(vca)
+print(result)
+#browser.find_elements_by_xpath(result)[0]
