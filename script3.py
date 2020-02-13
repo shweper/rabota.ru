@@ -70,7 +70,47 @@ result = slovar.get(vca)
 print(result)
 #browser.find_elements_by_xpath(result)[0]
 
+#Рубрики
+xpath_rubriks = {
+    'IT / Интернет / Телеком': '//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/a',
+    'Топ-менеджмент': '//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[2]/li/a',
 
+    'Банки / Инвестиции / Ценные бумаги': '//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[3]/li/ul/li[1]/a',
+    'Бухгалтерия / Аудит / Экономика предприятия':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[3]/li/ul/li[2]/a',
+    'Страхование':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[3]/li/ul/li[3]/a',
+
+    'HR / Кадры / Подбор персонала':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[1]/a',
+    'Административный персонал':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[2]/a',
+    'Консалтинг / Тренинги':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[3]/a',
+    'Охрана / Безопасность':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[4]/a',
+    'Юриспруденция':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[5]/a',
+    'Дизайн / Полиграфия':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[6]/a',
+    'Маркетинг / Реклама / PR':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[7]/a',
+    'СМИ / Издательства':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[4]/li/ul/li[8]/a',
+
+    'Госслужба / Некоммерческие организации':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[6]/li/ul/li[1]/a',
+    'Культура / Искусство / Развлечения':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[6]/li/ul/li[2]/a',
+    'Образование / Наука':'//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[6]/li/ul/li[3]/a',
+
+    'Торговля':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[1]/li/a',
+    'Производство / Агропром':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[2]/li/a',
+
+    'Недвижимость / Риелторские услуги':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[3]/li/ul/li[1]/a',
+    'Строительство / ЖКХ / Эксплуатация':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[3]/li/ul/li[2]/a',
+
+    'Логистика / Склад / ВЭД':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[4]/li/ul/li[1]/a',
+    'Транспорт / Автобизнес / Автосервис':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[4]/li/ul/li[2]/a',
+
+    'Красота / Фитнес / Спорт':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[5]/li/ul/li[1]/a',
+    'Медицина / Фармация / Ветеринария':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[5]/li/ul/li[2]/a',
+
+    'Бытовые услуги / Обслуживание оборудования':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[1]/a',
+    'Домашний персонал':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[2]/a',
+    'Рестораны / Питание':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[3]/a',
+    'Туризм / Гостиницы':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[4]/a',
+    'Работа без специальной подготовки / Без опыта':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[5]/a',
+    'Работа для студентов / Стажировки':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[6]/a',
+}
 #Словари для рубрик
 #IT / Интернет / Телеком
 xpath_it_ithernet = {
@@ -329,7 +369,6 @@ xpath_adm_personal= {
 #Консалтинг / Тренинги
 xpath_konsalting = {
     #Консалтинг
-
     'IT-консалтинг':'/html/body/div[6]/div[1]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[1]/label/input',
     'Кадровый консалтинг':'/html/body/div[6]/div[1]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[2]/label/input',
     'Консалтинг в области налогов и бухучета':'/html/body/div[6]/div[1]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[3]/label/input',
@@ -999,3 +1038,63 @@ xpath_job_for_student= {
 
 }
 
+#Соотношение рубрик и подрубрик
+
+vibor_podrubrik = {
+'IT / Интернет / Телеком': xpath_it_ithernet,
+'Топ-менеджмент': xpath_top_menegment,
+
+#'ФИНАНСЫ / СТРАХОВАНИЕ':
+
+'Банки / Инвестиции / Ценные бумаги': xpath_banki_invest,
+'Бухгалтерия / Аудит / Экономика предприятия': xparh_buhgalteria,
+'Страхование':xpath_strahovanie,
+
+#'ОФИСНЫЕ СЛУЖБЫ / БИЗНЕС-УСЛУГИ'
+
+'HR / Кадры / Подбор персонала': xpath_hr_kadri,
+'Административный персонал': xpath_adm_personal,
+'Консалтинг / Тренинги':xpath_konsalting,
+'Охрана / Безопасность':xpath_ohrana,
+'Юриспруденция':xpath_urisprud,
+
+#'МАРКЕТИНГ / РЕКЛАМА / СМИ'
+
+'Дизайн / Полиграфия':xpath_design,
+'Маркетинг / Реклама / PR':xpath_marketing,
+'СМИ / Издательства':xpath_smi,
+
+#'КУЛЬТУРА / ОБРАЗОВАНИЕ / ГОССЛУЖБА'
+
+'Госслужба / Некоммерческие организации':xpath_gossluzba,
+'Культура / Искусство / Развлечения':xpath_kultura,
+'Образование / Наука':xpath_obrazovanie,
+'Торговля':xpath_torgovla,
+'Производство / Агропром':xpath_proizvodstvo,
+
+#'СТРОИТЕЛЬСТВО / НЕДВИЖИМОСТЬ'
+
+'Недвижимость / Риелторские услуги':xpath_nedvizimost,
+'Строительство / ЖКХ / Эксплуатация':xpath_stroitelstvo_zkh,
+
+#'ТРАНСПОРТ / ЛОГИСТИКА'
+
+'Логистика / Склад / ВЭД':xpath_logistika,
+'Транспорт / Автобизнес / Автосервис':xpath_transport,
+
+#'КРАСОТА / ЗДОРОВЬЕ'
+
+'Красота / Фитнес / Спорт':xpath_krasota,
+'Медицина / Фармация / Ветеринария':xpath_medicina,
+
+#'СФЕРА УСЛУГ'
+
+'Бытовые услуги / Обслуживание оборудования':xpath_bitovie_yslugy,
+'Домашний персонал':xpath_home_personal,
+'Рестораны / Питание':xpath_restorani,
+'Туризм / Гостиницы':xpath_turizm,
+'Работа без специальной подготовки / Без опыта':xpath_job_no_opit,
+'Работа для студентов / Стажировки':xpath_job_for_student
+
+}
+pod_rubriks = vibor_podrubrik.get('IT / Интернет / Телеком', 0)
