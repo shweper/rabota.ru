@@ -352,6 +352,7 @@ while iter_gorod < len(script3.goroda_arr):
         print(company)
         print(rubriks)
         browser.find_element_by_xpath(rubriks).click()
+
         pod_rubriks = script3.vibor_podrubrik.get(opis_company, 0)
         print(pod_rubriks)
         xpartt = script3.pod_rubriks.get(vacancy) #тестовая строка
