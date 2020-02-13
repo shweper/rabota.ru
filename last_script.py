@@ -20,6 +20,7 @@ lst = (wb.sheetnames)
 sheet = wb[lst[0]]
 sheet.title
 iter_gorod = 0
+
 # random.randint(A, B) - случайное целое число N, A ≤ N ≤ B.
 while iter_gorod < len(script3.goroda_arr):
     iteracia = 0
@@ -334,23 +335,33 @@ while iter_gorod < len(script3.goroda_arr):
         time.sleep(1)
         browser.find_element_by_xpath('//*[@id="vacancyAddressPopup"]/div[2]/div[1]/table/tbody/tr[6]/td/input').click()
 
-        '''
-        browser.find_element_by_xpath('/html/body/div[11]/div[2]/div/div/div[2]/div/div/table/tbody/tr/td[1]/div/div[2]/div[2]/div[2]/div/a').click()
-        browser.find_element_by_xpath('/html/body/div[11]/div[2]/div/div/div[3]/div/input').click()
-        '''
+        
+       # browser.find_element_by_xpath('/html/body/div[11]/div[2]/div/div/div[2]/div/div/table/tbody/tr/td[1]/div/div[2]/div[2]/div[2]/div/a').click()
+       # browser.find_element_by_xpath('/html/body/div[11]/div[2]/div/div/div[3]/div/input').click()
+
         #browser.find_element_by_xpath('//*[@id="vacancyAddressPopup"]/div[2]/div[1]/table/tbody/tr[6]/td/input').click()
         #adr_bar.send_keys(Keys.ENTER)
+        
+
+
         ###############    Выбор рубрики    ###############
 
         browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[1]/tbody/tr/td[2]/div[1]/a').click()
-        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/a').click()
-        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[1]/label/input').click()
-        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[2]/label/input').click()
+        rubriks = script3.xpath_rubriks.get(company, 0)
+        print(vacancy)
+        print(company)
+        print(rubriks)
+        browser.find_element_by_xpath(rubriks).click()
+        pod_rubriks = script3.vibor_podrubrik.get(opis_company, 0)
+        print(pod_rubriks)
+        xpartt = script3.pod_rubriks.get(vacancy) #тестовая строка
+        print(xpartt)
+      # browser.find_element_by_xpath(xpartt).click()
+        #print(xpartt)#тестовая
+      # browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[1]/label/input').click()
+      # browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[2]/label/input').click()
         time.sleep(1)
         browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div/div[3]/a[1]').click()
-        sheet = wb[lst[0]]
-        result = script3.slovar.get(vacancy)
-        print(result)
 
         ###############    График работы    ###############
 
