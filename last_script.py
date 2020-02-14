@@ -7,24 +7,28 @@ import xlrd
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 
-wb = xlrd.open_workbook('DATA.xlsx')
-sheet_xlr = wb.sheet_by_name('Вакансии')
-a = 2
-rows_sheet = sheet_xlr.nrows
-print(rows_sheet)
-
-
-wb = load_workbook('./DATA.xlsx')
-lst = (wb.sheetnames)
-
-sheet = wb[lst[0]]
-sheet.title
 iter_gorod = 0
 
-# random.randint(A, B) - случайное целое число N, A ≤ N ≤ B.
 while iter_gorod < len(script3.goroda_arr):
     iteracia = 0
     while iteracia < 5:
+
+        wb = xlrd.open_workbook('./DATA.xlsx')
+        sheet_xlr = wb.sheet_by_name('Вакансии')
+        a = 2
+        rows_sheet = sheet_xlr.nrows
+        print(rows_sheet)
+
+
+        wb = load_workbook('./DATA.xlsx')
+        lst = (wb.sheetnames)
+
+        sheet = wb[lst[0]]
+        sheet.title
+
+
+# random.randint(A, B) - случайное целое число N, A ≤ N ≤ B.
+
 
         i = random.randint(3, rows_sheet)
         ################### заводим содержимое в переменные ################################
@@ -49,7 +53,7 @@ while iter_gorod < len(script3.goroda_arr):
         company = (sheet.cell(row=i, column=18).value)
         opis_company = (sheet.cell(row=i, column=19).value)
         # gorod = (sheet.cell(row=i, column=18).value)
-        # print(priem_zv_c)
+        print(vacancy)
 
         ###############    autorith  ###############
 
@@ -61,13 +65,17 @@ while iter_gorod < len(script3.goroda_arr):
         ###############    Open Browser and login  ###############
 
 
+
         #chrome_options.add_argument("--no-startup-window")
-        browser = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument("--start-maximized")
+        browser = webdriver.Chrome(chrome_options=options)
         driver = browser
+
         browser.get('https://nn.rabota.ru/v3_myVacancy.html?action=create&company_registered=true&employer_registered=true')
 
-        chrome_options = Options()
-        chrome_options.add_argument("--no-startup-window")
+        #chrome_options = Options()
+        #chrome_options.add_argument("--no-startup-window")
         driver.refresh()
         driver.implicitly_wait(1)
         # Логинимся
@@ -86,20 +94,23 @@ while iter_gorod < len(script3.goroda_arr):
 
 
         ###################################################OLD##################################################
-        time.sleep(1)
-
-        vak_bar_xpath = '//*[@id="custom_position"]'
+        time.sleep(2)
+        # /html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input
+        # /html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input
+        vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
         vak_bar = browser.find_element_by_xpath(vak_bar_xpath)
         vak_bar.send_keys(vacancy)
+        time.sleep(1)
         vak_bar.send_keys(Keys.ARROW_DOWN)
+        time.sleep(1)
         vak_bar.send_keys(Keys.ENTER)
         time.sleep(3)
-
+        '''
         driver.find_element_by_xpath('//*[@id="vacancyForm"]/div[1]/div[2]/div/table/tbody/tr[2]/td[2]/div[1]/span[1]').click()
         driver.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div/label[5]/input[2]').send_keys(vacancy)
         driver.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div/label[5]/input[3]').click()
         driver.find_element_by_xpath('//*[@id="jqmContent"]/div/div[3]/button').click()
-
+        '''
         zp_ot_bar_xpath = '//*[@id="salary_from"]'
         zp_ot_bar = browser.find_element_by_xpath(zp_ot_bar_xpath)
         zp_ot_bar.send_keys(zp_ot)
@@ -314,7 +325,7 @@ while iter_gorod < len(script3.goroda_arr):
         ###############    адрес работы    ###############
 
         browser.find_element_by_xpath('//*[@id="addressesList"]/div/a').click()
-        # browser.find_element_by_xpath('//*[@id="vacancyAddressPopupLink"]').click()
+        #browser.find_element_by_xpath('//*[@id="vacancyAddressPopupLink"]').click()
 
 
         browser.find_element_by_xpath('//*[@id="vacancyCityPopupLink"]').click()
@@ -349,11 +360,12 @@ while iter_gorod < len(script3.goroda_arr):
 
         #browser.find_element_by_xpath('//*[@id="vacancyAddressPopup"]/div[2]/div[1]/table/tbody/tr[6]/td/input').click()
         #adr_bar.send_keys(Keys.ENTER)
+
         ###############  anonim company  ###############
 
         browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[3]/td[2]/div/label/input').click()
-
-        browser.find_element_by_xpath('/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[6]/div/div/table[2]/tbody/tr[3]/td[2]/span/input').send_keys('Курьерская служба доставки')
+        time.sleep(1)
+        browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[3]/td[2]/span/input').send_keys('Курьерская служба доставки')
         ###############    Выбор рубрики    ###############
 
         browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[1]/tbody/tr/td[2]/div[1]/a').click()
@@ -372,7 +384,11 @@ while iter_gorod < len(script3.goroda_arr):
       # browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[1]/label/input').click()
       # browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/ul/li[2]/label/input').click()
         time.sleep(1)
-        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div/div[3]/a[1]').click()
+        try:
+            browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div/div[3]/a[1]').click()
+        except:
+            browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div/div/a[1]').click()
+        time.sleep(1)
 
         ###############    График работы    ###############
 

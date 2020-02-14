@@ -109,7 +109,7 @@ xpath_rubriks = {
     'Рестораны / Питание':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[3]/a',
     'Туризм / Гостиницы':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[4]/a',
     'Работа без специальной подготовки / Без опыта':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[5]/a',
-    'Работа для студентов / Стажировки':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[6]/a',
+    'Работа для студентов / Стажировки':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[8]/li/a',
 }
 #Словари для рубрик
 #IT / Интернет / Телеком
@@ -1031,7 +1031,7 @@ xpath_job_for_student= {
 
     'Call-центр':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[1]/label/input',
     'Делопроизводство':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[1]/label/input',
-    'Курьер':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[1]/label/input',
+    'Курьер':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[3]/label/input',
     'Оператор ПК':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[1]/label/input',
     'Стажировка': '/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[3]/li/label/input',
     'Другое': '/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[3]/li/label/input',
