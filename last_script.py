@@ -50,6 +50,14 @@ while iter_gorod < len(script3.goroda_arr):
         opis_company = (sheet.cell(row=i, column=19).value)
         # gorod = (sheet.cell(row=i, column=18).value)
         # print(priem_zv_c)
+
+        ###############    autorith  ###############
+
+        sheet = wb[lst[2]]
+        sheet.title
+        login = (sheet.cell(row=1, column=2).value)
+        password = (sheet.cell(row=2, column=2).value)
+
         ###############    Open Browser and login  ###############
 
 
@@ -65,11 +73,11 @@ while iter_gorod < len(script3.goroda_arr):
         # Логинимся
         login_bar_xpath = '//*[@id="mail"]'
         login_bar = browser.find_element_by_xpath(login_bar_xpath)
-        login_bar.send_keys('shweper@ya.ru')
+        login_bar.send_keys(login)
 
         pass_bar_xpath = '//*[@id="password"]'
         pass_bar = browser.find_element_by_xpath(pass_bar_xpath)
-        pass_bar.send_keys('Fqtawe98')
+        pass_bar.send_keys(password)
         # кликкаем войти
         driver.find_element_by_xpath('//*[@id="authForm"]/input[5]').click()
 
@@ -341,9 +349,11 @@ while iter_gorod < len(script3.goroda_arr):
 
         #browser.find_element_by_xpath('//*[@id="vacancyAddressPopup"]/div[2]/div[1]/table/tbody/tr[6]/td/input').click()
         #adr_bar.send_keys(Keys.ENTER)
-        
+        ###############  anonim company  ###############
 
+        browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[3]/td[2]/div/label/input').click()
 
+        browser.find_element_by_xpath('/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[6]/div/div/table[2]/tbody/tr[3]/td[2]/span/input').send_keys('Курьерская служба доставки')
         ###############    Выбор рубрики    ###############
 
         browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[1]/tbody/tr/td[2]/div[1]/a').click()
