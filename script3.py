@@ -108,8 +108,9 @@ xpath_rubriks = {
     'Домашний персонал':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[2]/a',
     'Рестораны / Питание':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[3]/a',
     'Туризм / Гостиницы':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[4]/a',
-    'Работа без специальной подготовки / Без опыта':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[6]/li/ul/li[5]/a',
+    'Работа без специальной подготовки / Без опыта':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[7]/li/a',
     'Работа для студентов / Стажировки':'//*[@id="jqmContent"]/div/div[1]/ul/li[2]/ul[8]/li/a',
+
 }
 #Словари для рубрик
 #IT / Интернет / Телеком
@@ -1030,9 +1031,9 @@ xpath_job_for_student= {
     'Юриспруденция':'/html/body/div[6]/div[1]/div/div[1]/ul/li[1]/ul/li/ul/li[1]/label/input',
 
     'Call-центр':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[1]/label/input',
-    'Делопроизводство':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[1]/label/input',
+    'Делопроизводство':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[2]/label/input',
     'Курьер':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[3]/label/input',
-    'Оператор ПК':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[1]/label/input',
+    'Оператор ПК':'/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[1]/li/ul/li[4]/label/input',
     'Стажировка': '/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[3]/li/label/input',
     'Другое': '/html/body/div[6]/div[1]/div/div[1]/ul/li[2]/ul[3]/li/label/input',
 
@@ -1097,4 +1098,3 @@ vibor_podrubrik = {
 'Работа для студентов / Стажировки':xpath_job_for_student
 
 }
-pod_rubriks = vibor_podrubrik.get('IT / Интернет / Телеком', 0)
