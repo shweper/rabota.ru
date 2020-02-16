@@ -1072,20 +1072,26 @@ while iter_gorod < len(script3.goroda_arr):
         mail = (sheet.cell(row=i, column=12).value)
         kod = (sheet.cell(row=i, column=13).value)
         phone = (sheet.cell(row=i, column=14).value)
-        priem_zv_c = (sheet.cell(row=i, column=15).value)
-        priem_zv_do = (sheet.cell(row=i, column=16).value)
-        dni_priem = (sheet.cell(row=i, column=17).value)
-        company = (sheet.cell(row=i, column=18).value)
-        opis_company = (sheet.cell(row=i, column=19).value)
-        company1 = (sheet.cell(row=i, column=20).value)
-        opis_company1 = (sheet.cell(row=i, column=21).value)
-        company2 = (sheet.cell(row=i, column=22).value)
-        opis_company2 = (sheet.cell(row=i, column=23).value)
-        company3 = (sheet.cell(row=i, column=24).value)
-        opis_company3 = (sheet.cell(row=i, column=25).value)
-        company4 = (sheet.cell(row=i, column=26).value)
-        opis_company4 = (sheet.cell(row=i, column=27).value)
-        nazvanie = (sheet.cell(row=i, column=28).value)
+        koment = (sheet.cell(row=i, column=15).value)
+        priem_zv_c = (sheet.cell(row=i, column=16).value)
+        priem_zv_do = (sheet.cell(row=i, column=17).value)
+        dni_priem = (sheet.cell(row=i, column=18).value)
+        company = (sheet.cell(row=i, column=19).value)
+        opis_company = (sheet.cell(row=i, column=20).value)
+        company1 = (sheet.cell(row=i, column=21).value)
+        opis_company1 = (sheet.cell(row=i, column=22).value)
+        company2 = (sheet.cell(row=i, column=23).value)
+        opis_company2 = (sheet.cell(row=i, column=24).value)
+        company3 = (sheet.cell(row=i, column=25).value)
+        opis_company3 = (sheet.cell(row=i, column=26).value)
+        company4 = (sheet.cell(row=i, column=27).value)
+        opis_company4 = (sheet.cell(row=i, column=28).value)
+        nazvanie = (sheet.cell(row=i, column=29).value)
+        pens = (sheet.cell(row=i, column=30).value)
+        stud = (sheet.cell(row=i, column=31).value)
+        drug_gor = (sheet.cell(row=i, column=32).value)
+        invalid = (sheet.cell(row=i, column=33).value)
+        migrant = (sheet.cell(row=i, column=34).value)
         #print(vacancy)
 
         ###############    autorith  ###############
@@ -1208,6 +1214,19 @@ while iter_gorod < len(script3.goroda_arr):
         elif pol == 'Женский':
             browser.find_element_by_xpath('//*[@id="is_male"]/option[3]').click()
 
+        ###############     Доп настройки кандидатов     ###############
+
+        if pens == 1:
+            browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[3]/div/table/tbody/tr[3]/td[2]/div/div/div[1]/label/input').click()
+        if stud == 1:
+            browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[3]/div/table/tbody/tr[3]/td[2]/div/div/div[2]/label/input').click()
+        if drug_gor == 1:
+            browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[3]/div/table/tbody/tr[3]/td[2]/div/div/div[3]/label/input').click()
+        if invalid == 1:
+            browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[3]/div/table/tbody/tr[3]/td[2]/div/div/div[4]/label/input').click()
+        if migrant == 1:
+            browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[3]/div/table/tbody/tr[3]/td[2]/div/div/div[5]/label/input').click()
+
         ###############     возраст     ###############
 
         vozr_ot_bar_xpath = '//*[@id="age_from"]'
@@ -1242,6 +1261,8 @@ while iter_gorod < len(script3.goroda_arr):
         phone_bar = browser.find_elements_by_xpath(phone_bar_xpath)[0]
         phone_bar.clear()
         phone_bar.send_keys(phone)
+
+        browser.find_element_by_xpath('//*[@id="phoneContainerComment_"]').send_keys(koment)
 
         ###############    время для звонков    ###############
 
