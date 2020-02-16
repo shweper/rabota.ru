@@ -1261,8 +1261,8 @@ while iter_gorod < len(script3.goroda_arr):
         phone_bar = browser.find_elements_by_xpath(phone_bar_xpath)[0]
         phone_bar.clear()
         phone_bar.send_keys(phone)
-
-        browser.find_element_by_xpath('//*[@id="phoneContainerComment_"]').send_keys(koment)
+        if koment != None:
+            browser.find_element_by_xpath('//*[@id="phoneContainerComment_"]').send_keys(koment)
 
         ###############    время для звонков    ###############
 
@@ -1497,7 +1497,7 @@ while iter_gorod < len(script3.goroda_arr):
         iframe = browser.find_elements_by_xpath('//*[@id="description_ifr"]')[0]
         driver.switch_to.default_content()
         driver.switch_to.frame(iframe)
-        div = browser.find_elements_by_tag_name('p')[0]
+        div = browser.find_elements_by_tag_name('body')[0]
 
         div.send_keys(opisanie)
         driver.switch_to.default_content()
