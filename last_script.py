@@ -1042,12 +1042,14 @@ vibor_podrubrik = {
 'Туризм / Гостиницы':script3.xpath_turizm,
 'Работа без специальной подготовки / Без опыта':script3.xpath_job_no_opit,
 'Работа для студентов / Стажировки':script3.xpath_job_for_student
-
 }
-while iter_gorod < len(script3.goroda_arr):
-    iteracia = 0
-    while iteracia < 5:
+
+iteracia = 1
+while iteracia < len(script3.goroda_arr[iter_gorod]):
+    iter_gorod = 0
+    while iteracia < len(script3.goroda_arr[iter_gorod]):
         #try:
+        print(len(script3.goroda_arr[iter_gorod]))
         error_string = 1043
         wb = xlrd.open_workbook('./DATA.xlsx')
         sheet_xlr = wb.sheet_by_name('Вакансии')
@@ -1422,8 +1424,8 @@ while iter_gorod < len(script3.goroda_arr):
         adr_bar_xpath = '//*[@id="vacancyAddressPopup"]/div[2]/div[1]/table/tbody/tr[1]/td/input[1]'
         adr_bar = browser.find_element_by_xpath(adr_bar_xpath)
         adr_bar.clear()
-        random_adres = random.randint(1, len(script3.goroda_arr[iter_gorod]) - 1)
-        adr_bar.send_keys(script3.goroda_arr[iter_gorod][0] + ' ' + script3.goroda_arr[iter_gorod][random_adres])
+        #random_adres = random.randint(1, len(script3.goroda_arr[iter_gorod]) - 1)
+        adr_bar.send_keys(script3.goroda_arr[iter_gorod][0] + ' ' + script3.goroda_arr[iter_gorod][iteracia])
         time.sleep(1)
         adr_bar.send_keys(Keys.ARROW_DOWN)
         adr_bar.send_keys(Keys.ENTER)
@@ -1540,9 +1542,9 @@ while iter_gorod < len(script3.goroda_arr):
 
         browser.find_element_by_xpath('//*[@id="publication_settings"]/div[2]/label/input').click()
         error_string = 1524
-        #browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[4]/td[2]/div/div[1]/label/input').click()
-        #browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div[1]/ul[2]/li[4]/a').click()
-        #browser.find_element_by_xpath('//*[@id="jqmContent"]/div/a').click()
+        browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[4]/td[2]/div/div[1]/label/input').click()
+        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div[1]/ul[2]/li[4]/a').click()
+        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/a').click()
         #time.sleep(1)
         browser.find_element_by_xpath('//*[@id="publishButton"]').click()
         time.sleep(1)
@@ -1573,7 +1575,8 @@ while iter_gorod < len(script3.goroda_arr):
                 log_file.close()
                 '''
             #browser.quit()
-        #iteracia = iteracia + 1
+        iter_gorod = iter_gorod + 1
 
-    iter_gorod = iter_gorod + 1
+    iter_gorod = 0
+    iteracia = iteracia + 1
     print(iter_gorod)
