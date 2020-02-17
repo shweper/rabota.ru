@@ -1147,18 +1147,28 @@ while iteracia < script3.high_number_gorod:
 
 
         ###################################################OLD##################################################
-        try:
+
+        vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
+
+        """try:
             vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
             #optimiz = True
         except:
             try:
-                time.sleep(1)
+                time.sleep(2)
                 vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
             except:
-                time.sleep(4)
+                time.sleep(3)
                 vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
+        """
+        istina = False  # тест
+        while istina == False:
+                try:
+                    vak_bar = browser.find_element_by_xpath(vak_bar_xpath)
+                    istina = True
+                except:
+                    time.sleep(1)
 
-        vak_bar = browser.find_element_by_xpath(vak_bar_xpath)
         vak_bar.send_keys(vacancy)
 
         error_string = 1157
@@ -1176,7 +1186,7 @@ while iteracia < script3.high_number_gorod:
         zp_do_bar = browser.find_element_by_xpath(zp_do_bar_xpath)
         zp_do_bar.send_keys(zp_do)
 
-        driver.find_element_by_xpath('//*[@id="mce_3"]/button').click()
+        driver.find_element_by_xpath('//*[@id="mce_3"]/button').click() #почему то вылезла ошибка, временно воткнул слип
 
         error_string = 1167
         ###############     Опыт работы     ###############
@@ -1498,7 +1508,7 @@ while iteracia < script3.high_number_gorod:
                # print(xpartt, "xpartt")
                 xpartt2 = xpartt.get(opis_companys[iter_companys])
 
-               # print(xpartt2, "xpartt2")
+                print(xpartt2, "xpartt2")
                 browser.find_element_by_xpath(xpartt2).click() # тестовая строка
                 try:
                     browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div/div[3]/a[1]').click()
@@ -1545,18 +1555,13 @@ while iteracia < script3.high_number_gorod:
         browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div[1]/ul[2]/li[4]/a').click()
         browser.find_element_by_xpath('//*[@id="jqmContent"]/div/a').click()
         #time.sleep(1)
-        browser.find_element_by_xpath('//*[@id="publishButton"]').click()
+        #browser.find_element_by_xpath('//*[@id="publishButton"]').click()
         time.sleep(1)
 
         # выбор тарифа на тесте не работает, только на прод
-        try:
-            browser.find_element_by_xpath('//*[@id="vacancyPublishTariff_50"]/div/div[2]/div/label[1]/span[1]').click()
-        except:
-            browser.find_element_by_xpath('//*[@id="vacancyPublishTariff_7"]/div/div[2]/div/label[1]/span[1]').click()
-                (//*[@id="vacancyPublishTariff_5"]/div/div[2]/div/label[1]/span[1])
+        #browser.find_element_by_xpath('/html/body/div[2]/div[2]/div[2]/div[1]/div[4]/div[1]/form/div/div[2]/div[1]/div/div/div[2]/div[1]/div/table/tbody/tr[2]/td/div/div[2]/div/label[1]/span[1]').click()
 
         browser.quit()
-        iteracia = iteracia + 1
         print(iteracia)
        # except:
         '''
