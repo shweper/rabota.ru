@@ -1045,7 +1045,7 @@ vibor_podrubrik = {
 }
 
 iteracia = 1
-while iteracia < len(script3.goroda_arr[iter_gorod]):
+while iteracia < script3.high_number_gorod:
     iter_gorod = 0
     while iteracia < len(script3.goroda_arr[iter_gorod]):
         #try:
@@ -1150,13 +1150,12 @@ while iteracia < len(script3.goroda_arr[iter_gorod]):
         try:
             vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
             #optimiz = True
-
         except:
             try:
                 time.sleep(1)
                 vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
             except:
-                time.sleep(2)
+                time.sleep(4)
                 vak_bar_xpath = '/html/body/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/div/form/div[1]/div[2]/div/table/tbody/tr[1]/td[2]/div[1]/input'
 
         vak_bar = browser.find_element_by_xpath(vak_bar_xpath)
@@ -1550,7 +1549,11 @@ while iteracia < len(script3.goroda_arr[iter_gorod]):
         time.sleep(1)
 
         # выбор тарифа на тесте не работает, только на прод
-        browser.find_element_by_xpath('//*[@id="vacancyPublishTariff_50"]/div/div[2]/div/label[1]/span[1]').click()
+        try:
+            browser.find_element_by_xpath('//*[@id="vacancyPublishTariff_50"]/div/div[2]/div/label[1]/span[1]').click()
+        except:
+            browser.find_element_by_xpath('//*[@id="vacancyPublishTariff_7"]/div/div[2]/div/label[1]/span[1]').click()
+                (//*[@id="vacancyPublishTariff_5"]/div/div[2]/div/label[1]/span[1])
 
         browser.quit()
         iteracia = iteracia + 1
