@@ -1449,21 +1449,35 @@ while iteracia < script3.high_number_gorod:
 
         yslovia = opisanie.partition('Условия:')
         # print(x[1])
-        obiaznosti = yslovia[2].partition('Обязанности:')
-        trebovania = obiaznosti[2].partition('Требования:')
-        #print(obiaznosti[0], trebovania[0], trebovania[2])
+        obiaznosti =  yslovia[2].partition('Обязанности:')
 
+        lst_obiaznosti = list(obiaznosti)
+        lstobi = lst_obiaznosti[0].split('\n', 1)
+        del lstobi[0]
+
+        trebovania = obiaznosti[2].partition('Требования:')
+        lst_trebovania = list(trebovania)
+        lst_treb = lst_trebovania[2].split('\n', 1)
+        #print(obiaznosti[0], trebovania[0], trebovania[2])
+        print(lst_trebovania)
+        treb0 = lst_trebovania[0].split('\n', 1)
+        #del treb0[0]
         iframe = browser.find_elements_by_xpath('//*[@id="description_ifr"]')[0]
         driver.switch_to.default_content()
         driver.switch_to.frame(iframe)
         div = browser.find_elements_by_tag_name('p')[0]
-        div.send_keys(Keys.CONTROL+ 'b' + yslovia[0] + '/n')
+        div.send_keys(Keys.ARROW_UP + yslovia[0]) #Переод обязанностями
         ysl = browser.find_elements_by_tag_name('ul')[0]
-        ysl.send_keys(obiaznosti[0])
+        print(lst_obiaznosti)
+        print(lst_obiaznosti[0])
+        print(lstobi)
+        ysl.send_keys(treb0) #То что после ОБЯЗАННОСТИ
+        ysl.send_keys(Keys.BACKSPACE)
         trb = browser.find_elements_by_tag_name('ul')[1]
-        trb.send_keys(trebovania[0])
+        trb.send_keys(lst_treb) #То что после ТРЕБОВАНИЯ
         obz = browser.find_elements_by_tag_name('ul')[2]
-        obz.send_keys(trebovania[2])
+        obz.send_keys(lstobi) #То что после УСЛОВИЯ
+        obz.send_keys(Keys.BACKSPACE)
 
         driver.switch_to.default_content()
         time.sleep(15)
