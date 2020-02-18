@@ -3,6 +3,7 @@ import random
 from splinter import Browser
 # import pandas as pd
 import xlrd
+import re
 wb = xlrd.open_workbook('DATA.xlsx')
 sheet_xlr = wb.sheet_by_name('Вакансии')
 a = 2
@@ -36,7 +37,7 @@ sheet.title
 # print(b)
 # i = random.choice(b)
 
-i = random.randint(3, rows_sheet)
+i = 3
 ################### заводим содержимое в переменные ################################
 # print(a)
 vacancy = (sheet.cell(row=i, column=1).value)
@@ -59,7 +60,20 @@ company = (sheet.cell(row=i, column=17).value)
 opis_company = (sheet.cell(row=i, column=18).value)
 # gorod = (sheet.cell(row=i, column=18).value)
 # print(priem_zv_c)
+opisanie = (sheet.cell(row=i, column=9).value)
 
+yslovia = opisanie.partition('Условия:')
+#print(x[1])
+obiaznosti = yslovia[2].partition('Обязанности:')
+trebovania = obiaznosti[2].partition('Требования:')
+print(obiaznosti[0], trebovania[0],trebovania[2])
+print(yslovia[0])
+
+#b.split('Обязанности:')
+#z = b[1]
+#z.split('Требования:')
+#print(x)
+'''
 ###############     Browser     ###############
 
 browser = Browser('chrome')
@@ -297,3 +311,4 @@ elif opyt == 'Любой день':
 
 
 #browser.quit()
+'''

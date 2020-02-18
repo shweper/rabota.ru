@@ -1188,7 +1188,7 @@ while iteracia < script3.high_number_gorod:
         zp_do_bar = browser.find_element_by_xpath(zp_do_bar_xpath)
         zp_do_bar.send_keys(zp_do)
 
-        driver.find_element_by_xpath('//*[@id="mce_3"]/button').click() #почему то вылезла ошибка, временно воткнул слип
+        #driver.find_element_by_xpath('//*[@id="mce_3"]/button').click() #почему то вылезла ошибка, временно воткнул слип
 
         error_string = 1167
         ###############     Опыт работы     ###############
@@ -1311,103 +1311,7 @@ while iteracia < script3.high_number_gorod:
 
         select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallTo_"]'))
         select.select_by_visible_text(priem_zv_do)
-        """if priem_zv_c == '0:30:00':
-            select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]'))
-            select.select_by_visible_text('00:30')
-        elif priem_zv_c == '1:00:00':
-            select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]'))
-            select.select_by_visible_text('01:00')
-        elif priem_zv_c == '1:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[4]').click()
-        elif priem_zv_c == '2:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[5]').click()
-        elif priem_zv_c == '2:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[6]').click()
-        elif priem_zv_c == '3:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[7]').click()
-        elif priem_zv_c == '3:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[8]').click()
-        elif priem_zv_c == '4:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[9]').click()
-        elif priem_zv_c == '4:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[10]').click()
-        elif priem_zv_c == '5:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[11]').click()
-        elif priem_zv_c == '5:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[12]').click()
-        elif priem_zv_c == '6:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[13]').click()
-        elif priem_zv_c == '6:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[14]').click()
-        elif priem_zv_c == '7:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[15]').click()
-        elif priem_zv_c == '7:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[16]').click()
-        elif priem_zv_c == '8:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[17]').click()
-        elif priem_zv_c == '8:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[18]').click()
-        elif priem_zv_c == '9:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[19]').click()
-        elif priem_zv_c == '9:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[20]').click()
-        elif priem_zv_c == '10:00:00':
-             browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[12]').click()
-        elif priem_zv_c == '10:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[13]').click()
-        elif priem_zv_c == '11:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[14]').click()
-        elif priem_zv_c == '11:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[2]').click()
-        elif priem_zv_c == '12:00:00':
-            browser.find_element_by_xpath('// *[ @ id = "offer_experience_year_count"] / option[5]').click()
-        elif priem_zv_c == '12:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[6]').click()
-        elif priem_zv_c == '13:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[7]').click()
-        elif priem_zv_c == '13:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[8]').click()
-        elif priem_zv_c == '14:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[9]').click()
-        elif priem_zv_c == '14:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[10]').click()
-        elif priem_zv_c == '15:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[11]').click()
-        elif priem_zv_c == '16:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[12]').click()
-        elif priem_zv_c == '16:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[13]').click()
-        elif priem_zv_c == '17:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[14]').click()
-        elif priem_zv_c == '17:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[2]').click()
-        elif priem_zv_c == '18:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[4]').click()
-        elif priem_zv_c == '18:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[5]').click()
-        elif priem_zv_c == '19:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[6]').click()
-        elif priem_zv_c == '19:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[7]').click()
-        elif priem_zv_c == '20:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[8]').click()
-        elif priem_zv_c == '20:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[9]').click()
-        elif priem_zv_c == '21:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[10]').click()
-        elif priem_zv_c == '21:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[11]').click()
-        elif priem_zv_c == '22:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[12]').click()
-        elif priem_zv_c == '22:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[13]').click()
-        elif priem_zv_c == '23:00:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[14]').click()
-        elif priem_zv_c == '23:30:00':
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[2]').click()
-        else:
-            browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[2]').click()
-"""
+
         error_string = 1380
         ###############    дни для звонков    ###############
         browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]').click()
@@ -1426,11 +1330,9 @@ while iteracia < script3.high_number_gorod:
 
         browser.find_element_by_xpath('//*[@id="vacancyCityPopupLink"]').click()
         browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[3]/div/p/a').click()
-        browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[1]/input').send_keys(
-            script3.goroda_arr[iter_gorod][0])
+        browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[1]/input').send_keys(script3.goroda_arr[iter_gorod][0])
         time.sleep(1)
-        browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[1]/input').send_keys(
-            Keys.ARROW_DOWN + Keys.ENTER)
+        browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[1]/input').send_keys(Keys.ARROW_DOWN + Keys.ENTER)
         # browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[3]/div/input').click()
         browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[3]/div/input').click()
 
@@ -1545,15 +1447,26 @@ while iteracia < script3.high_number_gorod:
         error_string =1508
         ####################################################
 
+        yslovia = opisanie.partition('Условия:')
+        # print(x[1])
+        obiaznosti = yslovia[2].partition('Обязанности:')
+        trebovania = obiaznosti[2].partition('Требования:')
+        #print(obiaznosti[0], trebovania[0], trebovania[2])
 
         iframe = browser.find_elements_by_xpath('//*[@id="description_ifr"]')[0]
         driver.switch_to.default_content()
         driver.switch_to.frame(iframe)
-        div = browser.find_elements_by_tag_name('body')[0]
+        div = browser.find_elements_by_tag_name('p')[0]
+        div.send_keys(Keys.CONTROL+ 'b' + yslovia[0] + '/n')
+        ysl = browser.find_elements_by_tag_name('ul')[0]
+        ysl.send_keys(obiaznosti[0])
+        trb = browser.find_elements_by_tag_name('ul')[1]
+        trb.send_keys(trebovania[0])
+        obz = browser.find_elements_by_tag_name('ul')[2]
+        obz.send_keys(trebovania[2])
 
-        div.send_keys(opisanie)
         driver.switch_to.default_content()
-
+        time.sleep(15)
         error_string = 1521
 
         #####################Оформление#####################
