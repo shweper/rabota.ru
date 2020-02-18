@@ -70,6 +70,8 @@ result = slovar.get(vca)
 print(result)
 #browser.find_elements_by_xpath(result)[0]
 
+
+
 #Рубрики
 xpath_rubriks = {
     'IT / Интернет / Телеком': '//*[@id="jqmContent"]/div/div[1]/ul/li[1]/ul[1]/li/a',
@@ -1098,3 +1100,13 @@ vibor_podrubrik = {
 'Работа для студентов / Стажировки':xpath_job_for_student
 
 }
+high_number_gorod = 0
+number_goroda = 0
+while number_goroda < len(goroda_arr):
+    max_number = len(goroda_arr[number_goroda])
+    if high_number_gorod< max_number:
+        high_number_gorod = max_number
+        number_goroda = number_goroda + 1
+    else:
+        number_goroda = number_goroda + 1
+print('higt_number_gorog = ' + str(high_number_gorod))

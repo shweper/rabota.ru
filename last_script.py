@@ -6,6 +6,7 @@ import random
 import xlrd
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 
 #Для оптимизации
 optimiz = False
@@ -1105,6 +1106,7 @@ while iteracia < script3.high_number_gorod:
         drug_gor = (sheet.cell(row=i, column=32).value)
         invalid = (sheet.cell(row=i, column=33).value)
         migrant = (sheet.cell(row=i, column=34).value)
+        oformlenie = (sheet.cell(row=i, column=35).value)
         #print(vacancy)
         error_string = 1099
         ###############    autorith  ###############
@@ -1302,14 +1304,19 @@ while iteracia < script3.high_number_gorod:
         error_string =1278
         ###############    время для звонков    ###############
 
-        browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]').click()
 
-        if priem_zv_c == '0:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[1]').click()
-        elif priem_zv_c == '0:30:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[2]').click()
+
+        select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]'))
+        select.select_by_visible_text(priem_zv_c)
+
+        select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallTo_"]'))
+        select.select_by_visible_text(priem_zv_do)
+        """if priem_zv_c == '0:30:00':
+            select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]'))
+            select.select_by_visible_text('00:30')
         elif priem_zv_c == '1:00:00':
-            browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[3]').click()
+            select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]'))
+            select.select_by_visible_text('01:00')
         elif priem_zv_c == '1:30:00':
             browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]/option[4]').click()
         elif priem_zv_c == '2:00:00':
@@ -1400,7 +1407,7 @@ while iteracia < script3.high_number_gorod:
             browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[2]').click()
         else:
             browser.find_element_by_xpath('//*[@id="offer_experience_year_count"]/option[2]').click()
-
+"""
         error_string = 1380
         ###############    дни для звонков    ###############
         browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]').click()
@@ -1549,14 +1556,198 @@ while iteracia < script3.high_number_gorod:
 
         error_string = 1521
 
+        #####################Оформление#####################
+
+        browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[4]/td[2]/div/div/label/input').click()
+        time.sleep(1)
+        try:
+            if oformlenie == "Шаблон АМБЕР1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[1]/li[1]/a').click()
+            elif oformlenie =="Шаблон Наземное такси1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[1]/li[2]/a').click()
+            elif oformlenie =="Шаблон Наземное такси2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[1]/li[3]/a').click()
+            elif oformlenie =="Шаблон Наземное такси3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[1]/li[4]/a').click()
+            elif oformlenie =="Шаблон АМБЕР2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[1]/li[5]/a').click()
+            elif oformlenie =="Шаблон Рестораны / Питание1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[1]/a').click()
+            elif oformlenie =="Шаблон Транспорт / Логистика1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[2]/a').click()
+            elif oformlenie =="Шаблон Охрана и безопасность1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[3]/a').click()
+            elif oformlenie =="Шаблон Рестораны / Питание2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[4]/a').click()
+            elif oformlenie =="Шаблон Рестораны / Питание3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[5]/a').click()
+            elif oformlenie =="Шаблон Транспорт / Логистика2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[6]/a').click()
+            elif oformlenie =="Шаблон Строительство1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[7]/a').click()
+            elif oformlenie =="Шаблон Производство / Агропром1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[8]/a').click()
+            elif oformlenie =="Шаблон Торговля1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[9]/a').click()
+            elif oformlenie =="Шаблон Туризм1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[10]/a').click()
+            elif oformlenie =="Шаблон Строительство2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[11]/a').click()
+            elif oformlenie =="Шаблон Торговля2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[12]/a').click()
+            elif oformlenie =="Шаблон Строительство3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[13]/a').click()
+            elif oformlenie =="Шаблон Туризм2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[14]/a').click()
+            elif oformlenie =="Шаблон Производство / Агропром2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[15]/a').click()
+            elif oformlenie =="Шаблон Производство / Агропром3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[16]/a').click()
+            elif oformlenie =="Шаблон Производство1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[17]/a').click()
+            elif oformlenie =="Шаблон Цветы1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[18]/a').click()
+            elif oformlenie =="Шаблон Швейное производство1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[19]/a').click()
+            elif oformlenie =="Шаблон Медицина1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[20]/a').click()
+            elif oformlenie =="Шаблон кол-центр1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[21]/a').click()
+            elif oformlenie =="Шаблон Офисный персонал1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[22]/a').click()
+            elif oformlenie =="Шаблон Рестораны / Питание4":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[23]/a').click()
+            elif oformlenie =="Шаблон Торговля3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[24]/a').click()
+            elif oformlenie =="Шаблон Мебельное производство1":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[25]/a').click()
+            elif oformlenie =="Шаблон Работа на АЗС":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[26]/a').click()
+            elif oformlenie =="Шаблон Производство2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[27]/a').click()
+            elif oformlenie =="Шаблон Производство3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[28]/a').click()
+            elif oformlenie =="Шаблон Столярное дело":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[29]/a').click()
+            elif oformlenie =="Шаблон Торговля4":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[30]/a').click()
+            elif oformlenie =="Шаблон Транспорт / Логистика3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[31]/a').click()
+            elif oformlenie =="Шаблон Транспорт / Логистика4":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[32]/a').click()
+            elif oformlenie =="Шаблон Офисный персонал2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[33]/a').click()
+            elif oformlenie =="Шаблон Торговля5":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[34]/a').click()
+            elif oformlenie =="Шаблон Офисный персонал3":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[35]/a').click()
+            elif oformlenie =="Шаблон Офисный персонал4":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[36]/a').click()
+            elif oformlenie =="Шаблон Охрана и безопасность2":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[37]/a').click()
+            elif oformlenie =="Шаблон Офисный персонал5":
+                browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/ul[2]/li[38]/a').click()
+        #    browser.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[2]/div[1]/a').click()
+        except:
+
+            #time.sleep(1)
+            if oformlenie == "Шаблон АМБЕР1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[1]/li[1]/a').click()
+            elif oformlenie == "Шаблон Наземное такси1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[1]/li[2]/a').click()
+            elif oformlenie == "Шаблон Наземное такси2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[1]/li[3]/a').click()
+            elif oformlenie == "Шаблон Наземное такси3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[1]/li[4]/a').click()
+            elif oformlenie == "Шаблон АМБЕР2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[1]/li[5]/a').click()
+            elif oformlenie == "Шаблон Рестораны / Питание1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[1]/a').click()
+            elif oformlenie == "Шаблон Транспорт / Логистика1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[2]/a').click()
+            elif oformlenie == "Шаблон Охрана и безопасность1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[3]/a').click()
+            elif oformlenie == "Шаблон Рестораны / Питание2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[4]/a').click()
+            elif oformlenie == "Шаблон Рестораны / Питание3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[5]/a').click()
+            elif oformlenie == "Шаблон Транспорт / Логистика2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[6]/a').click()
+            elif oformlenie == "Шаблон Строительство1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[7]/a').click()
+            elif oformlenie == "Шаблон Производство / Агропром1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[8]/a').click()
+            elif oformlenie == "Шаблон Торговля1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[9]/a').click()
+            elif oformlenie == "Шаблон Туризм1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[10]/a').click()
+            elif oformlenie == "Шаблон Строительство2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[11]/a').click()
+            elif oformlenie == "Шаблон Торговля2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[12]/a').click()
+            elif oformlenie == "Шаблон Строительство3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[13]/a').click()
+            elif oformlenie == "Шаблон Туризм2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[14]/a').click()
+            elif oformlenie == "Шаблон Производство / Агропром2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[15]/a').click()
+            elif oformlenie == "Шаблон Производство / Агропром3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[16]/a').click()
+            elif oformlenie == "Шаблон Производство1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[17]/a').click()
+            elif oformlenie == "Шаблон Цветы1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[18]/a').click()
+            elif oformlenie == "Шаблон Швейное производство1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[19]/a').click()
+            elif oformlenie == "Шаблон Медицина1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[20]/a').click()
+            elif oformlenie == "Шаблон кол-центр1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[21]/a').click()
+            elif oformlenie == "Шаблон Офисный персонал1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[22]/a').click()
+            elif oformlenie == "Шаблон Рестораны / Питание4":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[23]/a').click()
+            elif oformlenie == "Шаблон Торговля3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[24]/a').click()
+            elif oformlenie == "Шаблон Мебельное производство1":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[25]/a').click()
+            elif oformlenie == "Шаблон Работа на АЗС":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[26]/a').click()
+            elif oformlenie == "Шаблон Производство2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[27]/a').click()
+            elif oformlenie == "Шаблон Производство3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[28]/a').click()
+            elif oformlenie == "Шаблон Столярное дело":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[29]/a').click()
+            elif oformlenie == "Шаблон Торговля4":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[30]/a').click()
+            elif oformlenie == "Шаблон Транспорт / Логистика3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[31]/a').click()
+            elif oformlenie == "Шаблон Транспорт / Логистика4":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[32]/a').click()
+            elif oformlenie == "Шаблон Офисный персонал2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[33]/a').click()
+            elif oformlenie == "Шаблон Торговля5":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[34]/a').click()
+            elif oformlenie == "Шаблон Офисный персонал3":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[35]/a').click()
+            elif oformlenie == "Шаблон Офисный персонал4":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[36]/a').click()
+            elif oformlenie == "Шаблон Охрана и безопасность2":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[37]/a').click()
+            elif oformlenie == "Шаблон Офисный персонал5":
+                browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/ul[2]/li[38]/a').click()
+        browser.find_element_by_xpath('/html/body/div[6]/div[1]/div/div[2]/div[1]/a').click()
+
+        ######################Публикация#################
         browser.find_element_by_xpath('//*[@id="publication_settings"]/div[2]/label/input').click()
         error_string = 1524
-        browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[4]/td[2]/div/div[1]/label/input').click()
-        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/div[2]/div[1]/ul[2]/li[4]/a').click()
-        browser.find_element_by_xpath('//*[@id="jqmContent"]/div/a').click()
+        #browser.find_element_by_xpath('//*[@id="vacancyForm"]/div[6]/div/div/table[2]/tbody/tr[4]/td[2]/div/div[1]/label/input').click()
+
+        #browser.find_element_by_xpath('//*[@id="jqmContent"]/div/a').click()
         #time.sleep(1)
         #browser.find_element_by_xpath('//*[@id="publishButton"]').click()
-        time.sleep(1)
+        time.sleep(10)
 
         # выбор тарифа на тесте не работает, только на прод
         #browser.find_element_by_xpath('/html/body/div[2]/div[2]/div[2]/div[1]/div[4]/div[1]/form/div/div[2]/div[1]/div/div/div[2]/div[1]/div/table/tbody/tr[2]/td/div/div[2]/div/label[1]/span[1]').click()
