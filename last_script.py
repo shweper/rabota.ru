@@ -1,4 +1,7 @@
 import time
+
+from selenium.webdriver import ActionChains
+
 import script3
 from selenium import webdriver
 from openpyxl import load_workbook
@@ -1304,8 +1307,6 @@ while iteracia < script3.high_number_gorod:
             error_string =1278
             ###############    время для звонков    ###############
 
-
-
             select = Select(browser.find_element_by_xpath('//*[@id="phoneContainerCallFrom_"]'))
             select.select_by_visible_text(priem_zv_c)
 
@@ -1314,28 +1315,19 @@ while iteracia < script3.high_number_gorod:
 
             error_string = 1380
             ###############    дни для звонков    ###############
-            try:
-                select = Select(browser.find_element_by_class_name('b-text-input b-select__select mr_5'))
-                select.select_by_visible_text(opyt)
-                '''
-                browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]').click()
-                if opyt == 'Рабочие дни':
-                    browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]/option[1]').click()
-                elif opyt == 'Выходные дни':
-                    browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]/option[2]').click()
-                elif opyt == 'Любой день':
-                    browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]/option[3]').click()
-                '''
-            except:
-                time.sleep(1)
+            browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]').click()
+            if opyt == 'Рабочие дни':
+                browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]/option[1]').click()
+            elif opyt == 'Выходные дни':
+                browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]/option[2]').click()
+            elif opyt == 'Любой день':
+                browser.find_element_by_xpath('//*[@id="phoneContainerCallPeriod_"]/option[3]').click()
 
             error_string =1404
             ###############    адрес работы    ###############
-            try:
-                browser.find_element_by_class_name('//*[@id="addressesList"]/div/a').click()
-            except:
-                time.sleep(0)
-                # browser.find_element_by_xpath('//*[@id="vacancyAddressPopupLink"]').click()
+
+            browser.find_element_by_xpath('//*[@id="addressesList"]/div/a').click()
+            # browser.find_element_by_xpath('//*[@id="vacancyAddressPopupLink"]').click()
 
             browser.find_element_by_xpath('//*[@id="vacancyCityPopupLink"]').click()
             browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[3]/div/p/a').click()
@@ -1346,7 +1338,7 @@ while iteracia < script3.high_number_gorod:
             browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[3]/div/input').click()
 
             # browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div/div[1]/input').sendKeys(Keys.ENTER)
-            time.sleep(1)
+
             browser.find_element_by_xpath('//*[@id="vacancyAddressPopupLink"]').click()
             adr_bar_xpath = '//*[@id="vacancyAddressPopup"]/div[2]/div[1]/table/tbody/tr[1]/td/input[1]'
             adr_bar = browser.find_element_by_xpath(adr_bar_xpath)
@@ -1492,7 +1484,9 @@ while iteracia < script3.high_number_gorod:
             obz.send_keys(lstobi) #То что после УСЛОВИЯ
             obz.send_keys(Keys.BACKSPACE)
             obz.send_keys(Keys.ENTER + Keys.ENTER + tr2)
-
+            start = driver.find_element_by_visible_text('')
+            stop = driver.find_element_by_visible_text('')
+            ActionChains(driver).drag_and_drop(start, stop).perform()
 
 
             driver.switch_to.default_content()
@@ -1703,10 +1697,10 @@ while iteracia < script3.high_number_gorod:
             try:
                 log_file.write("ERROR " + str(iteracia) + "\n")
                 log_file.write("Сломалось на строке" + str(error_string) + "\n")
-    
+
                 log_file.write("Город " + script3.goroda_arr[iter_gorod][0] + "\n")
                 log_file.write("Адрес  " + script3.goroda_arr[iter_gorod][random_adres] + "\n")
-    
+
                 log_file.write("Рубрика " + error_companys + "\n")
                 log_file.write("xpath рубрики " + rubriks + "\n")
                 log_file.write("Подрубрика(профессия) " + error_opis + "\n")
@@ -1717,8 +1711,8 @@ while iteracia < script3.high_number_gorod:
                 log_file.close()
             '''
             browser.quit()
-    iter_gorod = iter_gorod + 1
+        iter_gorod = iter_gorod + 1
 
-iter_gorod = 0
-iteracia = iteracia + 1
-print(iter_gorod)
+    iter_gorod = 0
+    iteracia = iteracia + 1
+    print(iter_gorod)
