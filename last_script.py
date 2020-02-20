@@ -1467,7 +1467,7 @@ while iteracia < script3.high_number_gorod:
             driver.switch_to.default_content()
             driver.switch_to.frame(iframe)
             div = browser.find_elements_by_tag_name('p')[0]
-            div.send_keys(Keys.ARROW_UP + yslovia[0]) #Переод обязанностями
+            div.send_keys(Keys.ARROW_UP + Keys.LEFT_CONTROL + 'b' + yslovia[0]) #Переод обязанностями
             ysl = browser.find_elements_by_tag_name('ul')[0]
             print(lst_obiaznosti)
             print(lst_obiaznosti[0])
@@ -1484,12 +1484,11 @@ while iteracia < script3.high_number_gorod:
             obz.send_keys(lstobi) #То что после УСЛОВИЯ
             obz.send_keys(Keys.BACKSPACE)
             obz.send_keys(Keys.ENTER + Keys.ENTER + tr2)
-            start = driver.find_element_by_visible_text('')
-            stop = driver.find_element_by_visible_text('')
-            ActionChains(driver).drag_and_drop(start, stop).perform()
-
-
+            div.send_keys(Keys.SHIFT + Keys.ARROW_DOWN + Keys.ARROW_DOWN + Keys.ARROW_DOWN)
+            #div.send_keys(Keys.LEFT_CONTROL + 'b')
             driver.switch_to.default_content()
+            browser.find_element_by_xpath('//*[@id="mce_6"]/button')
+            browser.find_element_by_xpath('//*[@id="mce_6"]/button')
 
             error_string = 1521
 
