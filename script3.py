@@ -56,18 +56,14 @@ for cell in sheet['A']:
 #goroda_arr = []
 
 print(kolichestvo_gorodov)
-
 # СЧИТЫВАЕМ ГОРОДА иЗ ЭКСЕЛЯ ДИНАМИЧЕСКИ
 for number_gorod in range(kolichestvo_gorodov):
     goroda_arr.append([])
     for cell in list(sheet.rows)[number_gorod]:
-         if cell.value == None:
-            number_gorod = number_gorod +1
-            break
-         else:
+         if cell.value != None:
             goroda_arr[number_gorod].append(cell.value)
 
-    # goroda_arr[number_adr].pop(0)
+
 
 ''''
 massiv = []
@@ -75,7 +71,6 @@ for i in range(10):
     massiv.append([])
     for b in range(20):
          massiv[i].append(b)
-
 print(massiv)
 '''
 
@@ -84,6 +79,15 @@ goroda_arr.pop(0)
 #print(goroda_arr)
 
 print(goroda_arr)
+sss = 0
+#for sss in range(len(goroda_arr)-5):
+#    if goroda_arr[sss] != None:
+#        print(goroda_arr[sss])
+#        goroda_arr.pop(sss)
+goroda_arr = list(filter(None, goroda_arr))
+
+
+print(goroda_arr, 'redakt')
 
 vca = 'Программист'
 slovar = {
@@ -105,4 +109,3 @@ while number_goroda < len(goroda_arr):
     else:
         number_goroda = number_goroda + 1
 print('higt_number_gorog = ' + str(high_number_gorod))
-
