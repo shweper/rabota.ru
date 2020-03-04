@@ -59,6 +59,15 @@ def closers():
         browser.find_element_by_xpath('/html/body/div[3]/button').click()
     except:
         print("Идём дальше")
+#Прокликиваем все инвайты
+def invite():
+    link = 0
+    invite = browser.find_elements_by_class_name('link_invite')
+    for link in range(len(invite)):
+        print(invite[link])
+        link+=1
+        print(len(invite))
+        print("клик клик", link)
 
 #Основная программа кликера
 def main():
@@ -71,7 +80,7 @@ def main():
         try:
             tds[1].find_element_by_tag_name('a').click()
             try:
-                browser.find_element_by_class_name('link_invite')
+                invite()
                 print("TRUUU")
                 browser.get('https://nn.rabota.ru/v3_vacancyResponseTable.html')
                 vivod_100()
@@ -79,7 +88,7 @@ def main():
                 try:
                     tds[2].find_element_by_tag_name('a').click()
                     try:
-                        browser.find_element_by_class_name('link_invite')
+                        invite()
                         print("TRUUU__2")
                         n += 1  # НА ПРОДЕ УБРАТЬ!????????????????????????????????????
                         browser.get('https://nn.rabota.ru/v3_vacancyResponseTable.html')
@@ -104,7 +113,7 @@ def main():
             try:
                 tds[2].find_element_by_tag_name('a').click()
                 try:
-                    browser.find_element_by_class_name('link_invite')
+                    invite()
                     print("TRUUU__2")
                     n += 1  # НА ПРОДЕ УБРАТЬ!????????????????????????????????????????????????
                     browser.get('https://nn.rabota.ru/v3_vacancyResponseTable.html')
