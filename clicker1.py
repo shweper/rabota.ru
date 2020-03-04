@@ -69,6 +69,8 @@ def invite():
         print(len(invite))
         print("клик клик", link)
 
+
+
 #Основная программа кликера
 def main():
     n = 0
@@ -78,6 +80,7 @@ def main():
         tr_white = browser.find_elements_by_class_name("tr_white")
         tds = tr_white[n].find_elements_by_tag_name('td')
         try:
+            tds[1].find_element_by_tag_name('a')
             tds[1].find_element_by_tag_name('a').click()
             try:
                 invite()
@@ -86,6 +89,7 @@ def main():
                 vivod_100()
                 time.sleep(1)
                 try:
+                    tds[2].find_element_by_tag_name('a')
                     tds[2].find_element_by_tag_name('a').click()
                     try:
                         invite()
@@ -111,6 +115,7 @@ def main():
         except:
 
             try:
+                tds[2].find_element_by_tag_name('a')
                 tds[2].find_element_by_tag_name('a').click()
                 try:
                     invite()
