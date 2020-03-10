@@ -992,60 +992,60 @@ while vsego <= 1500:
 
     iter_gorod = 0
     vibor_podrubrik = {
-    'IT / Интернет / Телеком': script3.xpath_it_ithernet,
-    'Топ-менеджмент': script3.xpath_top_menegment,
+        'IT / Интернет / Телеком': xpath_it_ithernet,
+        'Топ-менеджмент': xpath_top_menegment,
 
-    #'ФИНАНСЫ / СТРАХОВАНИЕ':
+        #'ФИНАНСЫ / СТРАХОВАНИЕ':
 
-    'Банки / Инвестиции / Ценные бумаги': script3.xpath_banki_invest,
-    'Бухгалтерия / Аудит / Экономика предприятия': script3.xparh_buhgalteria,
-    'Страхование':script3.xpath_strahovanie,
+        'Банки / Инвестиции / Ценные бумаги': xpath_banki_invest,
+        'Бухгалтерия / Аудит / Экономика предприятия': xparh_buhgalteria,
+        'Страхование':xpath_strahovanie,
 
-    #'ОФИСНЫЕ СЛУЖБЫ / БИЗНЕС-УСЛУГИ'
+        #'ОФИСНЫЕ СЛУЖБЫ / БИЗНЕС-УСЛУГИ'
 
-    'HR / Кадры / Подбор персонала':script3.xpath_hr_kadri,
-    'Административный персонал': script3.xpath_adm_personal,
-    'Консалтинг / Тренинги':script3.xpath_konsalting,
-    'Охрана / Безопасность':script3.xpath_ohrana,
-    'Юриспруденция':script3.xpath_urisprud,
+        'HR / Кадры / Подбор персонала':xpath_hr_kadri,
+        'Административный персонал': xpath_adm_personal,
+        'Консалтинг / Тренинги':xpath_konsalting,
+        'Охрана / Безопасность':xpath_ohrana,
+        'Юриспруденция':xpath_urisprud,
 
-    #'МАРКЕТИНГ / РЕКЛАМА / СМИ'
+        #'МАРКЕТИНГ / РЕКЛАМА / СМИ'
 
-    'Дизайн / Полиграфия':script3.xpath_design,
-    'Маркетинг / Реклама / PR':script3.xpath_marketing,
-    'СМИ / Издательства':script3.xpath_smi,
+        'Дизайн / Полиграфия':xpath_design,
+        'Маркетинг / Реклама / PR':xpath_marketing,
+        'СМИ / Издательства':xpath_smi,
 
-    #'КУЛЬТУРА / ОБРАЗОВАНИЕ / ГОССЛУЖБА'
+        #'КУЛЬТУРА / ОБРАЗОВАНИЕ / ГОССЛУЖБА'
 
-    'Госслужба / Некоммерческие организации':script3.xpath_gossluzba,
-    'Культура / Искусство / Развлечения':script3.xpath_kultura,
-    'Образование / Наука':script3.xpath_obrazovanie,
-    'Торговля':script3.xpath_torgovla,
-    'Производство / Агропром':script3.xpath_proizvodstvo,
+        'Госслужба / Некоммерческие организации':xpath_gossluzba,
+        'Культура / Искусство / Развлечения':xpath_kultura,
+        'Образование / Наука':xpath_obrazovanie,
+        'Торговля':xpath_torgovla,
+        'Производство / Агропром':xpath_proizvodstvo,
 
-    #'СТРОИТЕЛЬСТВО / НЕДВИЖИМОСТЬ'
+        #'СТРОИТЕЛЬСТВО / НЕДВИЖИМОСТЬ'
 
-    'Недвижимость / Риелторские услуги':script3.xpath_nedvizimost,
-    'Строительство / ЖКХ / Эксплуатация':script3.xpath_stroitelstvo_zkh,
+        'Недвижимость / Риелторские услуги':xpath_nedvizimost,
+        'Строительство / ЖКХ / Эксплуатация':xpath_stroitelstvo_zkh,
 
-    #'ТРАНСПОРТ / ЛОГИСТИКА'
+        #'ТРАНСПОРТ / ЛОГИСТИКА'
 
-    'Логистика / Склад / ВЭД':script3.xpath_logistika,
-    'Транспорт / Автобизнес / Автосервис':script3.xpath_transport,
+        'Логистика / Склад / ВЭД':xpath_logistika,
+        'Транспорт / Автобизнес / Автосервис':xpath_transport,
 
-    #'КРАСОТА / ЗДОРОВЬЕ'
+        #'КРАСОТА / ЗДОРОВЬЕ'
 
-    'Красота / Фитнес / Спорт':script3.xpath_krasota,
-    'Медицина / Фармация / Ветеринария':script3.xpath_medicina,
+        'Красота / Фитнес / Спорт':xpath_krasota,
+        'Медицина / Фармация / Ветеринария':xpath_medicina,
 
-    #'СФЕРА УСЛУГ'
+        #'СФЕРА УСЛУГ'
 
-    'Бытовые услуги / Обслуживание оборудования':script3.xpath_bitovie_yslugy,
-    'Домашний персонал':script3.xpath_home_personal,
-    'Рестораны / Питание':script3.xpath_restorani,
-    'Туризм / Гостиницы':script3.xpath_turizm,
-    'Работа без специальной подготовки / Без опыта':script3.xpath_job_no_opit,
-    'Работа для студентов / Стажировки':script3.xpath_job_for_student
+        'Бытовые услуги / Обслуживание оборудования':xpath_bitovie_yslugy,
+        'Домашний персонал':xpath_home_personal,
+        'Рестораны / Питание':xpath_restorani,
+        'Туризм / Гостиницы':xpath_turizm,
+        'Работа без специальной подготовки / Без опыта':xpath_job_no_opit,
+        'Работа для студентов / Стажировки':xpath_job_for_student
     }
 
     iteracia = 1
@@ -1053,6 +1053,9 @@ while vsego <= 1500:
         iter_gorod = 0
         while iteracia < len(script3.goroda_arr[iter_gorod]):
             try:
+
+
+
                 print(len(script3.goroda_arr[iter_gorod]))
                 error_string = 1043
                 wb = xlrd.open_workbook('./DATA.xlsx')
@@ -1417,14 +1420,14 @@ while vsego <= 1500:
 
                         except:
                             time.sleep(1)
-                        rubriks = script3.xpath_rubriks.get(companys[iter_companys], 0)
+                        rubriks = xpath_rubriks.get(companys[iter_companys], 0)
                         #print(opis_companys[iter_companys])
                        # print(company, "company")
                         #print(rubriks, "rubriks")
                         browser.find_element_by_xpath(rubriks).click()
                         time.sleep(1)
 
-                        xpartt = script3.vibor_podrubrik.get(companys[iter_companys], 0)
+                        xpartt = vibor_podrubrik.get(companys[iter_companys], 0)
                         #print(companys[iter_companys])
                        # print(xpartt, "xpartt")
                         xpartt2 = xpartt.get(opis_companys[iter_companys])
@@ -1757,6 +1760,9 @@ while vsego <= 1500:
                         log_file.close()
                     '''
                 browser.quit()
+
+
+
             iter_gorod = iter_gorod + 1
             vsego = vsego + 1
 
